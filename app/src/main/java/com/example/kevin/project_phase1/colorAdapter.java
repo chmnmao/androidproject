@@ -47,13 +47,14 @@ public class colorAdapter<T> extends ArrayAdapter<T> {
 
         //Test here to set color to gradients depending on size of input array
         float hue, hueNext;
-        for(int i=0;i<data.size();i++){
-            hue=(360/data.size())*i;
-            hueNext=(360/data.size())*(i+1);
-            float[] hsv1={hue, 1, 1};
-            float[] hsv2={hueNext,1,1};
-            tv.setBackground(new colorGradient(hsv1, hsv2,"gradi"+i).getLRGradient());
-        }
+
+        hue=(360/ (float) data.size())*position;
+        hueNext=(360/(float)data.size())*(position+1);
+
+        float[] hsv1={hue, 1, 1};
+        float[] hsv2={hueNext,1,1};
+        tv.setBackground(new colorGradient(hsv1, hsv2,"gradi"+position).getLRGradient());
+
         return view;
     }
 }
